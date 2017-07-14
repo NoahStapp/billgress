@@ -1,0 +1,21 @@
+/* Header */
+
+.Header {
+    min-height: 400px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+/* Bill Item */
+
+.BillItem {
+    background-color: #2C8C99;
+    border-bottom: 1px solid #000;
+}
+
+.bill-title {
+    font-size: 30px;
+    text-align: center; 
+    color: #fff;
+}
