@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-
 import BillItem from './BillItem.js'
 
 class Bills extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {bills: []}
-  }
   componentDidMount() {
-    fetch('/api/recent')
-    .then(response => response.json())
-    .then(response => {
-      this.setState({
-        bills: response
-      });
-    });
+    this.props.fetchData();
   };
 
   render() {
-    const items = this.state.bills.map(item => 
-      <BillItem key={item.bill_id} bill={item} onClick={() => this.props.onBillClick(item.bill_id)}/>
+    if (this.props.isLoading) {
+      return <p>Loading…</p>;
+    }
+    const items = this.props.bills.map(item => 
+      <BillItem key={item.bill_id} bill={item} onClick={() => this.props.onBillClick(item.bill_id, 'SHOW_DETAIL')}/>
       );
     return (
       <div>
@@ -31,7 +23,9 @@ class Bills extends Component {
 };
 
 Bills.propTypes = {
-  onBillClick: PropTypes.func.isRequired
+  onBillClick: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  bills: PropTypes.array.isRequired
 }
 
 export default Bills;

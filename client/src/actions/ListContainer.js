@@ -9,7 +9,7 @@ export const PageState = {
 
 export function billClicked(id, state) {
     return {
-        type: BILL_CLICKED,
+        type: 'BILL_CLICKED',
         id,
         state
     }
@@ -29,14 +29,12 @@ export function billsFetchDataSuccess(bills) {
     }
 }
 
-export function billsFetchData(url) {
+export function billsFetchData() {
     return (dispatch) => {
         dispatch(billsIsLoading(true));
-
-        fetch(url)
+        fetch('/api/recent')
             .then((response) => {
                 dispatch(billsIsLoading(false));
-
                 return response;
             })
             .then((response) => response.json())

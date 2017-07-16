@@ -9,7 +9,6 @@ var port = process.env.PORT || 3001;
 var apiKey = 'jnfiutPOiK2Rh9FW8uRupa49YYXZ2wfl4j4vwL7S';
 
 app.get('/api/recent', function (req, res) {
-    var info = [];
     var options = {
         url: 'https://api.propublica.org/congress/v1/115/house/bills/introduced.json',
         headers: {
@@ -33,8 +32,33 @@ app.get('/api/recent', function (req, res) {
         });
         console.log('filteredBills:-----');
         console.log(filteredBills);
-        info = filteredBills;
         res.json(filteredBills)
+    });
+});
+
+app.get('/api/bill/:id', function (req, res) {
+    const billId = req.params.id;
+    const idSplit = _.split(billId, '-');
+    const billSlug = idSplit[0];
+    console.log(billSlug);
+    var options = {
+        url: 'https://api.propublica.org/congress/v1/115/bills/'+billSlug+'.json',
+        headers: {
+            'X-API-Key': apiKey
+        },
+    };
+    request.get(options, function(error, response, data) {
+        data = JSON.parse(data);
+        console.log('BILL_DATA:----');
+        console.log(data);
+        const results = _.get(data, 'results');
+        const filteredBill = _.map(results, function(item) {
+            var obj = _.pick(item, ['title', 'bill_id', 'number','sponsor', 'sponsor_party', 'congressdotgov_url', 'introduced_date', 'latest_major_action', 'summary','votes', 'primary_subject']);
+            return obj
+        })
+        console.log(results);
+        console.log(filteredBill);
+        res.json(filteredBill);
     });
 });
 

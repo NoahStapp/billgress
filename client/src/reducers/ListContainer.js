@@ -1,11 +1,10 @@
-import { combineReducers } from 'redux'
 import {
   BILL_CLICKED,
   PageState
-} from '../actions/actions'
+} from '../actions/ListContainer'
 const { SHOW_LIST } = PageState
 
-function pageState(state = SHOW_LIST, action) {
+export function pageState(state = SHOW_LIST, action) {
   switch (action.type) {
     case BILL_CLICKED:
       return action.state
@@ -14,7 +13,7 @@ function pageState(state = SHOW_LIST, action) {
   }
 }
 
-function billId(state = {id: undefined}, action) {
+export function billId(state = {id: undefined}, action) {
   switch (action.type) {
     case BILL_CLICKED:
       return {
@@ -34,7 +33,7 @@ export function billsIsLoading(state = false, action) {
     }
 }
 
-export function bills(state = {}, action) {
+export function bills(state = [], action) {
     switch (action.type) {
         case 'BILLS_FETCH_DATA_SUCCESS':
             return action.bills;
@@ -42,10 +41,3 @@ export function bills(state = {}, action) {
             return state;
     }
 }
-
-const billApp = combineReducers({
-  pageState,
-  billId
-})
-
-export default billApp
