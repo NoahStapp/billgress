@@ -1,8 +1,8 @@
 import {
   BILL_CLICKED,
   PageState
-} from '../actions/ListContainer'
-const { SHOW_LIST } = PageState
+} from '../actions/ListContainer';
+const { SHOW_LIST } = PageState;
 
 export function pageState(state = SHOW_LIST, action) {
   switch (action.type) {

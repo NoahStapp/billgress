@@ -30,9 +30,11 @@ export function billsFetchDataSuccess(bills) {
 }
 
 export function billsFetchData() {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch(billsIsLoading(true));
-        fetch('/api/recent')
+        const house = getState().filterState;
+        console.log(house);
+        fetch('/api/recent/'+house)
             .then((response) => {
                 dispatch(billsIsLoading(false));
                 return response;

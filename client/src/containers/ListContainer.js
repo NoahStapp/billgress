@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { billClicked } from '../actions/ListContainer'
 import { billsFetchData } from '../actions/ListContainer'
-import Bills from '../components/Bills'
+import Bills from '../components/List/Bills'
 
 const getBillId = (state) => {
   return state.billId.id

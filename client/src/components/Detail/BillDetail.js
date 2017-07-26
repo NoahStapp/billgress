@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
-
-import BillDetailItem from './BillDetailItem.js'
+import PropTypes from 'prop-types';
+import BillDetailItem from './BillDetailItem.js';
 
 class BillDetail extends Component {
     componentDidMount() {

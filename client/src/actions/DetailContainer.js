@@ -18,7 +18,7 @@ export function billDetailIsLoading(bool) {
 export function billDetailFetchData() {
     return (dispatch, getState) => {
         dispatch(billDetailIsLoading(true));
-        const {id} = getState().billId
+        const {id} = getState().billId;
         fetch('/api/bill/'+id)
             .then((response) => {
                 dispatch(billDetailIsLoading(false));

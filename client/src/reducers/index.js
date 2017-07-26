@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { pageState, billId, billsIsLoading, bills } from './ListContainer';
 import {billDetailIsLoading, billDetail } from './DetailContainer'
+import {filterState} from './FilterContainer';
 
 export default combineReducers({
     pageState,
@@ -8,5 +9,6 @@ export default combineReducers({
     billsIsLoading,
     bills,
     billDetail,
-    billDetailIsLoading
+    billDetailIsLoading,
+    filterState
 });

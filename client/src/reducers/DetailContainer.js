@@ -28,6 +28,6 @@ export function billDetailId(state = {id: 'hres443-115'}, action) {
         id: action.id,
       }
     default:
-      return state
+      return state;
   }
 }

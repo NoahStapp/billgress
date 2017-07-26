@@ -8,9 +8,11 @@ var app = express();
 var port = process.env.PORT || 3001;
 var apiKey = 'jnfiutPOiK2Rh9FW8uRupa49YYXZ2wfl4j4vwL7S';
 
-app.get('/api/recent', function (req, res) {
+app.get('/api/recent/:house/', function (req, res) {
+    const house = req.params.house;
+    console.log(house);
     var options = {
-        url: 'https://api.propublica.org/congress/v1/115/house/bills/introduced.json',
+        url: 'https://api.propublica.org/congress/v1/115/'+house+'/bills/introduced.json',
         headers: {
             'X-API-Key': apiKey
         },
