@@ -33,6 +33,7 @@ export function billsFetchData() {
     return (dispatch, getState) => {
         dispatch(billsIsLoading(true));
         const house = getState().filterState;
+        console.log('FETCHING:')
         console.log(house);
         fetch('/api/recent/'+house)
             .then((response) => {

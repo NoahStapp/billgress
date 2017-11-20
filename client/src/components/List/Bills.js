@@ -6,7 +6,11 @@ class Bills extends Component {
   componentDidMount() {
     this.props.fetchData();
   };
-
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.filterState !== this.props.filterState) {
+      this.props.fetchData();
+    }
+  }
   render() {
     if (this.props.isLoading) {
       return <p>Loading…</p>;

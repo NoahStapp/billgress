@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
     billid: getBillId(state),
     bills: state.bills,
     isLoading: state.billsIsLoading,
+    filterState: state.filterState
   };
 };
 

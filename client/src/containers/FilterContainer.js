@@ -4,7 +4,9 @@ import FilterButtons from '../components/Filter/FilterButtons'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onButtonClick: (state) => dispatch(buttonClicked(state))
+    onButtonClick: (state) => {
+      dispatch(buttonClicked(state))
+    }
   };
 };
 

@@ -6,6 +6,7 @@ import BillDetailVotes from './BillDetailVotes';
 
 class BillDetailItem extends Component {
      render() {
+        console.log(this.props.bill)
         return (
             <div className="BillDetailItem">
                 <BillDetailInfo info={this.props.bill}/>
